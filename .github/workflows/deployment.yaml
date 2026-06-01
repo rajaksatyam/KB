@@ -51,9 +51,7 @@ jobs:
   deploy-backend:
     runs-on: ubuntu-latest
     # ✅ Only trigger when backend code actually changed
-    if: |
-      contains(toJson(github.event.commits.*.modified), 'backend/') ||
-      contains(toJson(github.event.commits.*.added), 'backend/')
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -82,11 +80,11 @@ jobs:
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.VM_HOST_IP }}
-          username: opc
+          username: ubuntu
           key: ${{ secrets.VM_SSH_PRIVATE_KEY }}
           script: |
             export OCI_REGISTRY="${{ secrets.OCI_REGISTRY }}"
             export OCI_NAMESPACE="${{ secrets.OCI_NAMESPACE }}"
             export OCI_USERNAME="${{ secrets.OCI_USERNAME }}"
             export OCI_AUTH_TOKEN="${{ secrets.OCI_AUTH_TOKEN }}"
-            /home/opc/deploy_backend.sh
+            /home/ubuntu/deploy_backend.sh
