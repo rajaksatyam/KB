@@ -1,7 +1,7 @@
 import type{Request,Response,NextFunction} from "express"
-import { EnvConfig } from "../config/env.config"
-import { logger } from "../utility/logger.utility"
-import { AppError } from "../errors/AppErrors.errors"
+import { EnvConfig } from "../config/env.config.js"
+import { logger } from "../utility/logger.utility.js"
+import { AppError } from "../errors/AppErrors.errors.js"
 
 
 

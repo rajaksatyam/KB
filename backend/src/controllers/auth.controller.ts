@@ -1,6 +1,3 @@
-
-
-
 import { EnvConfig } from "../config/env.config.js";
 import { type Auth } from "../validate/auth.validate.js";
 import type { NextFunction, Request, Response } from "express";

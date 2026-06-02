@@ -1,5 +1,5 @@
 
-import { userModel, blackListModel, type Iuser, type IblackListToken } from "../models/auth.model"
+import { userModel, blackListModel, type Iuser, type IblackListToken } from "../models/auth.model.js"
 
 
 

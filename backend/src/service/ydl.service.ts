@@ -1,5 +1,5 @@
 import YTD from "yt-dlp-exec";
-import { analyzeVideo, type Analysis } from './summery.LLM.service';
+import { analyzeVideo, type Analysis } from './summery.LLM.service.js';
 import { randomUUID } from "crypto";
 import fs from "fs";
 import path from "path";

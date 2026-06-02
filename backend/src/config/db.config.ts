@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import { EnvConfig } from "./env.config";
-import { logger } from "../utility/logger.utility";
+import { EnvConfig } from "./env.config.js";
+import { logger } from "../utility/logger.utility.js";
 const connectToDB = async()=>{
     try{
         if(!EnvConfig.MONGO_URI){

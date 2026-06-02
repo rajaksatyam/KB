@@ -1,8 +1,8 @@
 import type { Request, Response, NextFunction } from "express"
 import JWT from "jsonwebtoken"
-import { EnvConfig } from "../config/env.config";
-import { AppError } from "../errors/AppErrors.errors";
-import { blackListedTokenFinderRepo } from "../repository/auth.repo";
+import { EnvConfig } from "../config/env.config.js";
+import { AppError } from "../errors/AppErrors.errors.js";
+import { blackListedTokenFinderRepo } from "../repository/auth.repo.js";
 
 export interface AuthRequest extends Request {
     user?: string | JWT.JwtPayload;

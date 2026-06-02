@@ -1,9 +1,9 @@
-import { hashPassword, verifyPassword } from "../utility/hashing.utility";
-import { createUser, findUser, tokenBlackListRepo } from "../repository/auth.repo";
-import type { Auth } from "../validate/auth.validate";
+import { hashPassword, verifyPassword } from "../utility/hashing.utility.js";
+import { createUser, findUser, tokenBlackListRepo } from "../repository/auth.repo.js";
+import type { Auth } from "../validate/auth.validate.js";
 import JWT, { type JwtPayload } from "jsonwebtoken";
-import { EnvConfig } from "../config/env.config";
-import { AppError } from "../errors/AppErrors.errors";
+import { EnvConfig } from "../config/env.config.js";
+import { AppError } from "../errors/AppErrors.errors.js";
 import type { Types } from "mongoose";
 
 

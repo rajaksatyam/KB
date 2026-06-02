@@ -1,5 +1,5 @@
 import {type Algorithm, hash,verify,type Options} from "@node-rs/argon2"
-import { EnvConfig } from "../config/env.config"
+import { EnvConfig } from "../config/env.config.js"
 import { createHmac } from "crypto"
 
 const argon2_Options:Options = {
