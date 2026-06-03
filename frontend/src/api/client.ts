@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export const api = axios.create({
-  baseURL: `${import.meta.env.VITE_API_URL}/api`,
+  baseURL: `${import.meta.env.KB_BACKEND_API}/api`,
   withCredentials: true, // must be true for cookies
 })
 

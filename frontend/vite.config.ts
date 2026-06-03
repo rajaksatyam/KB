@@ -9,7 +9,7 @@ export default defineConfig({
     // In production, VITE_API_URL env var points to Oracle server directly
     proxy: {
       '/api': {
-        target: 'https://rajaksatyam.github.io',
+        target: 'https://kb-api.flashhub.net',
         changeOrigin: true,
         cookieDomainRewrite: 'localhost',
       },
