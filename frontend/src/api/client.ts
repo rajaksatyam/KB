@@ -47,7 +47,7 @@
 import axios from "axios"
 
 export const api = axios.create({
-  baseURL: 'https://kb-api.flashhub.net/api',
+  baseURL: 'https://kb-api.flashhub.net/',
   withCredentials: true,
 })
 
@@ -75,7 +75,7 @@ api.interceptors.response.use(null, async (error) => {
 
   // Never retry refresh or auth routes — would cause infinite loop
   const isAuthRoute = originalRequest.url?.includes('/auth/')
-  
+
   if (error.response?.status === 401 && !originalRequest._retry && !isAuthRoute) {
     originalRequest._retry = true
     try {

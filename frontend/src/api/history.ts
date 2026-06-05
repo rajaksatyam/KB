@@ -19,7 +19,7 @@ export interface HistoryPage {
 export const historyApi = {
     getPage: async (page: number): Promise<HistoryPage> => {
         const res = await api.get<{ success: boolean } & HistoryPage>(
-            `/api/history?page=${page}`
+            `/history?page=${page}`
         )
         return res.data
     },
