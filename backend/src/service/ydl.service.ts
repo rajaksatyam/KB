@@ -41,10 +41,10 @@ export const download = async (URL: string) => {
   // }
 
   const info = await YTD(URL, options);
-  logger.info(info)
   const cdnURL = info.url ?? info.formats?.at(-1)?.url
+  logger.info(cdnURL)
   const summery: Analysis = await analyzeVideo(cdnURL);
- 
+
   return summery;
 }
 
