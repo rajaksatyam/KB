@@ -240,6 +240,7 @@
 
 
 import { GoogleGenAI } from "@google/genai";
+import { EnvConfig } from "../config/env.config";
 
 
 export interface Analysis {
@@ -276,7 +277,7 @@ export interface Analysis {
 }
 
 
-const apiKey = process.env.GEMINI_API_KEY;
+const apiKey = EnvConfig.GEMINI_KEY;
 if (!apiKey) {
   throw new Error("CRITICAL: GEMINI_API_KEY environment variable is missing.");
 }
