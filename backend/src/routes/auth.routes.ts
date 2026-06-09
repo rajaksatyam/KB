@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { SignUpController, SignInController, signOutController, refreshController } from "../controllers/auth.controller.js";
+import { SignUpController, SignInController, signOutController, } from "../controllers/auth.controller.js";
 import { AuthSchema } from "../validate/auth.validate.js";
 import { validate } from "../middleware/validate.middleware.js";
-import { verifyUser } from "../middleware/userVerification.middleware.js";
+
 import { authRateLimit } from "../middleware/ratelimiter.middleware.js";
 
 
