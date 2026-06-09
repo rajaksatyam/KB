@@ -1,4 +1,4 @@
-import { api, startTokenRefresh } from './client'
+import { api } from './client'
 
 import type { SignUpInput, SignInInput } from '../validate/auth.validate'
 
@@ -12,7 +12,6 @@ export const authApi = {
 
   signIn: async (data: SignInInput) => {
     const res = await api.post<{ msg: string; user: { userName: string } }>('/auth/signIn', data)
-    startTokenRefresh()
     return res.data
   },
 

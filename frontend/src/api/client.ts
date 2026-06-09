@@ -51,42 +51,53 @@ export const api = axios.create({
   withCredentials: true,
 })
 
-let refreshTimeout: ReturnType<typeof setTimeout>
 
-function scheduleRefresh() {
-  clearTimeout(refreshTimeout)
-  refreshTimeout = setTimeout(async () => {
-    try {
-      await api.post("/auth/refresh")
-      scheduleRefresh()
-    } catch {
-      window.location.href = '/auth'
-    }
-  }, 14 * 60 * 1000)
-}
+api.interceptors.response.use(null, (error) => {
 
-export function startTokenRefresh() {
-  scheduleRefresh()
-}
-
-// ✅ Fixed interceptor — skip refresh routes to prevent loop
-api.interceptors.response.use(null, async (error) => {
-  const originalRequest = error.config
-
-  // Never retry refresh or auth routes — would cause infinite loop
-  const isAuthRoute = originalRequest.url?.includes('/auth/')
-
-  if (error.response?.status === 401 && !originalRequest._retry && !isAuthRoute) {
-    originalRequest._retry = true
-    try {
-      await api.post("/auth/refresh")
-      scheduleRefresh() // restart the timer after successful refresh
-      return api(originalRequest)
-    } catch {
-      window.location.href = '/auth'
-      return Promise.reject(error)
-    }
+  if (error.response?.status === 401) {
+    window.location.href = '/auth'
   }
-
   return Promise.reject(error)
 })
+
+
+// let refreshTimeout: ReturnType<typeof setTimeout>
+
+// function scheduleRefresh() {
+//   clearTimeout(refreshTimeout)
+//   refreshTimeout = setTimeout(async () => {
+//     try {
+//       await api.post("/auth/refresh")
+//       scheduleRefresh()
+//     } catch {
+//       window.location.href = '/auth'
+//     }
+//   }, 14 * 60 * 1000)
+// }
+
+// export function startTokenRefresh() {
+//   scheduleRefresh()
+// }
+
+// ✅ Fixed interceptor — skip refresh routes to prevent loop
+// api.interceptors.response.use(null, async (error) => {
+//   const originalRequest = error.config
+
+//   // Never retry refresh or auth routes — would cause infinite loop
+//   const isAuthRoute = originalRequest.url?.includes('/auth/')
+
+//   if (error.response?.status === 401 && !originalRequest._retry && !isAuthRoute) {
+//     originalRequest._retry = true
+//     try {
+//       await api.post("/auth/refresh")
+//       scheduleRefresh() // restart the timer after successful refresh
+//       return api(originalRequest)
+//     } catch {
+//       window.location.href = '/auth'
+//       return Promise.reject(error)
+//     }
+//   }
+
+//   return Promise.reject(error)
+// })
+

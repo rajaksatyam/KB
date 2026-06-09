@@ -11,7 +11,7 @@ const authRouter = Router();
 authRouter.post('/signUp',authRateLimit ,validate(AuthSchema.signUp),SignUpController);
 authRouter.post('/signIn', authRateLimit,validate(AuthSchema.signIn),SignInController);
 authRouter.get('/signOut',signOutController);
-authRouter.post('/refresh',verifyUser,refreshController);
+
 
 
 

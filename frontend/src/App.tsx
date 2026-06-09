@@ -26,8 +26,6 @@
 
 
 import { useAuthStore } from './store/auth.store'
-import { startTokenRefresh } from './api/client'
-import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthPage } from './pages/AuthPage'
 import { HomePage } from './pages/HomePage'
@@ -44,14 +42,6 @@ const PublicRoute = ({ children }: { children: React.ReactNode }) => {
 
 
 export const App = () => {
-  const isAuth = useAuthStore(s => s.isAuth)
-
-  useEffect(() => {
-    if (isAuth) {
-      startTokenRefresh() // ← restart timer after page refresh
-    }
-  }, [])
-
   return < BrowserRouter >
     <Routes>
       <Route path="/auth" element={<PublicRoute><AuthPage /></PublicRoute>} />
